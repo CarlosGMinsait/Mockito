@@ -118,9 +118,16 @@ class ExamenServiceImplTest {
     }
     @Test
     void testSave(){
-        Examen examen = Datos.EXAMEN;
-        service.save(examen);
-        assertTrue(examen.getPreguntas().isEmpty());
+        when(service.save(Datos.EXAMEN)).thenReturn(Datos.EXAMEN);
+        Examen examen = service.save(Datos.EXAMEN);
+        assertAll(
+                () -> assertEquals(4L,examen.getId()),
+                () -> assertEquals("Quimica",examen.getNombre()),
+                () -> assertTrue(examen.getPreguntas().isEmpty())
+        );
+
+
+
     }
 
         }
