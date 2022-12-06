@@ -118,7 +118,7 @@ class ExamenServiceImplTest {
     }
     @Test
     void testSave(){
-        when(service.save(Datos.EXAMEN)).thenReturn(Datos.EXAMEN);
+        when(examenRepository.save(Datos.EXAMEN)).thenReturn(Datos.EXAMEN);
         Examen examen = service.save(Datos.EXAMEN);
         assertAll(
                 () -> assertEquals(4L,examen.getId()),
